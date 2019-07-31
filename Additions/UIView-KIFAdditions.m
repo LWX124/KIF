@@ -296,14 +296,7 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
             {
                 [scrollView setContentOffset:scrollContentOffset];
             } else {
-                // initialPosition seems wrong when pulling down
-                NSIndexPath *initialFirstIndex = [indexPathsForVisibleRows firstObject];
-                
-                if ([initialFirstIndex compare:[NSIndexPath indexPathForRow:0 inSection:0]] == NSOrderedSame) {
-                    [tableView scrollsToTop];
-                } else {
-                    [tableView scrollRectToVisible:initialPosition animated:NO];
-                }
+                [tableView scrollRectToVisible:initialPosition animated:NO];
             }
             CFRunLoopRunInMode(UIApplicationCurrentRunMode, delay, false);
         } else if ([self isKindOfClass:[UICollectionView class]]) {
